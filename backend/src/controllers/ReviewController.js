@@ -1,14 +1,14 @@
 const ReviewRepository = require('../repositories/ReviewRepository');
 const OrderRepository = require('../repositories/OrderRepository');
-const { CreateReviewDTO, UpdateReviewDTO } = require('../dtos/review.dto');
+const { createReviewSchema, updateReviewSchema } = require('../dtos/review.dto');
 const Review = require('../../models/Review');
 
 class ReviewController {
   async create(req, res) {
     try {
-      const dto = new CreateReviewDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length > 0) return res.status(400).json({ success: false, message: errors.join(', ') });
+      const result = createReviewSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       const productId = req.params.productId;
 
@@ -59,9 +59,9 @@ class ReviewController {
         return res.status(403).json({ success: false, message: 'Not authorized' });
       }
 
-      const dto = new UpdateReviewDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length > 0) return res.status(400).json({ success: false, message: errors.join(', ') });
+      const result = updateReviewSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       const updates = {};
       if (dto.rating !== undefined) updates.rating = dto.rating;

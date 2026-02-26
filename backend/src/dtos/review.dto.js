@@ -1,27 +1,13 @@
-class CreateReviewDTO {
-  constructor(body) {
-    this.rating = parseInt(body.rating);
-    this.comment = body.comment?.trim() || '';
-  }
-  validate() {
-    const errors = [];
-    if (!this.rating || this.rating < 1 || this.rating > 5) errors.push('Rating must be between 1 and 5');
-    if (this.comment && this.comment.length > 500) errors.push('Comment cannot exceed 500 characters');
-    return errors;
-  }
-}
+const { z } = require('zod');
 
-class UpdateReviewDTO {
-  constructor(body) {
-    if (body.rating !== undefined) this.rating = parseInt(body.rating);
-    if (body.comment !== undefined) this.comment = body.comment.trim();
-  }
-  validate() {
-    const errors = [];
-    if (this.rating !== undefined && (this.rating < 1 || this.rating > 5)) errors.push('Rating must be between 1 and 5');
-    if (this.comment !== undefined && this.comment.length > 500) errors.push('Comment cannot exceed 500 characters');
-    return errors;
-  }
-}
+const createReviewSchema = z.object({
+  rating: z.coerce.number().int().min(1, 'Rating must be between 1 and 5').max(5, 'Rating must be between 1 and 5'),
+  comment: z.string().trim().max(500, 'Comment cannot exceed 500 characters').optional().default(''),
+});
 
-module.exports = { CreateReviewDTO, UpdateReviewDTO };
+const updateReviewSchema = z.object({
+  rating: z.coerce.number().int().min(1, 'Rating must be between 1 and 5').max(5, 'Rating must be between 1 and 5').optional(),
+  comment: z.string().trim().max(500, 'Comment cannot exceed 500 characters').optional(),
+});
+
+module.exports = { createReviewSchema, updateReviewSchema };

@@ -1,29 +1,22 @@
-class CreateBillDTO {
-  constructor(body) {
-    this.paymentMethod = body.paymentMethod || 'cash';
-  }
+const { z } = require('zod');
 
-  validate() {
-    const valid = ['cash', 'card', 'upi'];
-    if (!valid.includes(this.paymentMethod)) {
-      return ['Payment method must be: ' + valid.join(', ')];
-    }
-    return [];
-  }
+const createBillSchema = z.object({
+  paymentMethod: z.enum(['cash', 'card', 'upi'], {
+    error: 'Payment method must be: cash, card, upi',
+  }).default('cash'),
+});
+
+// Query params — all strings from req.query, coerce where needed
+const billQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(10),
+  isPaid: z.enum(['true', 'false']).optional(),
+});
+
+function buildBillFilter(parsed) {
+  const filter = {};
+  if (parsed.isPaid !== undefined) filter.isPaid = parsed.isPaid === 'true';
+  return filter;
 }
 
-class BillQueryDTO {
-  constructor(query) {
-    this.page = parseInt(query.page) || 1;
-    this.limit = parseInt(query.limit) || 10;
-    this.isPaid = query.isPaid;
-  }
-
-  toFilter() {
-    const filter = {};
-    if (this.isPaid !== undefined) filter.isPaid = this.isPaid === 'true';
-    return filter;
-  }
-}
-
-module.exports = { CreateBillDTO, BillQueryDTO };
+module.exports = { createBillSchema, billQuerySchema, buildBillFilter };

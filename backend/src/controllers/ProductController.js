@@ -1,13 +1,13 @@
 const ProductRepository = require('../repositories/ProductRepository');
-const { CreateProductDTO, UpdateProductDTO, ProductQueryDTO } = require('../dtos/product.dto');
+const { createProductSchema, updateProductSchema, productQuerySchema, buildProductFilter } = require('../dtos/product.dto');
 
 class ProductController {
   async getAll(req, res) {
     try {
-      const query = new ProductQueryDTO(req.query);
-      const filter = query.toFilter();
+      const query = productQuerySchema.parse(req.query);
+      const filter = buildProductFilter(query);
       const result = await ProductRepository.findWithFilters(filter, {
-        page: query.page, limit: query.limit, sortBy: query.sortBy, order: query.order,
+        page: query.page, limit: query.limit, sortBy: query.sortBy, order: query.order === 'asc' ? 1 : -1,
       });
       res.status(200).json({ success: true, products: result.docs, pagination: { page: result.page, limit: result.limit, total: result.total, pages: result.pages } });
     } catch (error) {
@@ -27,9 +27,9 @@ class ProductController {
 
   async create(req, res) {
     try {
-      const dto = new CreateProductDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length) return res.status(400).json({ success: false, message: errors[0] });
+      const result = createProductSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       if (req.file) dto.image = `/uploads/${req.file.filename}`;
       const product = await ProductRepository.create(dto);
@@ -41,9 +41,9 @@ class ProductController {
 
   async update(req, res) {
     try {
-      const dto = new UpdateProductDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length) return res.status(400).json({ success: false, message: errors[0] });
+      const result = updateProductSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       if (req.file) dto.image = `/uploads/${req.file.filename}`;
       const product = await ProductRepository.updateById(req.params.id, dto);

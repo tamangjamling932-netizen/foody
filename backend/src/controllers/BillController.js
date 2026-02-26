@@ -2,14 +2,14 @@ const PDFDocument = require('pdfkit');
 const QRCode = require('qrcode');
 const BillRepository = require('../repositories/BillRepository');
 const OrderRepository = require('../repositories/OrderRepository');
-const { CreateBillDTO, BillQueryDTO } = require('../dtos/bill.dto');
+const { createBillSchema, billQuerySchema, buildBillFilter } = require('../dtos/bill.dto');
 
 class BillController {
   async generate(req, res) {
     try {
-      const dto = new CreateBillDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length) return res.status(400).json({ success: false, message: errors[0] });
+      const result = createBillSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       const order = await OrderRepository.findById(req.params.orderId);
       if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
@@ -30,8 +30,8 @@ class BillController {
 
   async getAll(req, res) {
     try {
-      const query = new BillQueryDTO(req.query);
-      const filter = query.toFilter();
+      const query = billQuerySchema.parse(req.query);
+      const filter = buildBillFilter(query);
       const result = await BillRepository.findWithPagination(filter, { page: query.page, limit: query.limit });
       res.status(200).json({ success: true, bills: result.docs, pagination: { page: result.page, limit: result.limit, total: result.total, pages: result.pages } });
     } catch (error) {

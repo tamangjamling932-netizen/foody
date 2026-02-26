@@ -1,13 +1,16 @@
 const OrderRepository = require('../repositories/OrderRepository');
 const CartRepository = require('../repositories/CartRepository');
-const { CreateOrderDTO, UpdateOrderStatusDTO, OrderQueryDTO } = require('../dtos/order.dto');
+const { createOrderSchema, updateOrderStatusSchema, orderQuerySchema, buildOrderFilter } = require('../dtos/order.dto');
 
 const TAX_RATE = 0.05;
 
 class OrderController {
   async create(req, res) {
     try {
-      const dto = new CreateOrderDTO(req.body);
+      const result = createOrderSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
+
       const cart = await CartRepository.getPopulated(req.user._id);
       if (!cart || cart.items.length === 0) {
         return res.status(400).json({ success: false, message: 'Cart is empty' });
@@ -41,8 +44,8 @@ class OrderController {
 
   async getMyOrders(req, res) {
     try {
-      const query = new OrderQueryDTO(req.query);
-      const filter = query.toFilter(req.user._id);
+      const query = orderQuerySchema.parse(req.query);
+      const filter = buildOrderFilter(query, req.user._id);
       const result = await OrderRepository.findWithPagination(filter, { page: query.page, limit: query.limit });
       res.status(200).json({ success: true, orders: result.docs, pagination: { page: result.page, limit: result.limit, total: result.total, pages: result.pages } });
     } catch (error) {
@@ -65,8 +68,8 @@ class OrderController {
 
   async getAll(req, res) {
     try {
-      const query = new OrderQueryDTO(req.query);
-      const filter = query.toFilter();
+      const query = orderQuerySchema.parse(req.query);
+      const filter = buildOrderFilter(query);
       const result = await OrderRepository.findWithPagination(filter, { page: query.page, limit: query.limit });
       res.status(200).json({ success: true, orders: result.docs, pagination: { page: result.page, limit: result.limit, total: result.total, pages: result.pages } });
     } catch (error) {
@@ -76,11 +79,10 @@ class OrderController {
 
   async updateStatus(req, res) {
     try {
-      const dto = new UpdateOrderStatusDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length) return res.status(400).json({ success: false, message: errors[0] });
+      const result = updateOrderStatusSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
 
-      const order = await OrderRepository.updateById(req.params.id, { status: dto.status });
+      const order = await OrderRepository.updateById(req.params.id, { status: result.data.status });
       if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
       res.status(200).json({ success: true, order });
     } catch (error) {

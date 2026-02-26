@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const UserRepository = require('../repositories/UserRepository');
-const { RegisterDTO, LoginDTO, UpdateProfileDTO, UpdatePasswordDTO } = require('../dtos/auth.dto');
+const { registerSchema, loginSchema, updateProfileSchema, updatePasswordSchema } = require('../dtos/auth.dto');
 const sendEmail = require('../utils/sendEmail');
 
 class AuthController {
@@ -17,9 +17,9 @@ class AuthController {
 
   async register(req, res) {
     try {
-      const dto = new RegisterDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length) return res.status(400).json({ success: false, message: errors[0] });
+      const result = registerSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       const existing = await UserRepository.findByEmail(dto.email);
       if (existing) return res.status(400).json({ success: false, message: 'Email already registered' });
@@ -33,9 +33,9 @@ class AuthController {
 
   async login(req, res) {
     try {
-      const dto = new LoginDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length) return res.status(400).json({ success: false, message: errors[0] });
+      const result = loginSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       const user = await UserRepository.findByEmailWithPassword(dto.email);
       if (!user) return res.status(401).json({ success: false, message: 'Invalid credentials' });
@@ -60,9 +60,9 @@ class AuthController {
 
   async updateProfile(req, res) {
     try {
-      const dto = new UpdateProfileDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length) return res.status(400).json({ success: false, message: errors[0] });
+      const result = updateProfileSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       const updates = {};
       if (dto.name) updates.name = dto.name;
@@ -77,9 +77,9 @@ class AuthController {
 
   async updatePassword(req, res) {
     try {
-      const dto = new UpdatePasswordDTO(req.body);
-      const errors = dto.validate();
-      if (errors.length) return res.status(400).json({ success: false, message: errors[0] });
+      const result = updatePasswordSchema.safeParse(req.body);
+      if (!result.success) return res.status(400).json({ success: false, message: result.error.issues[0].message });
+      const dto = result.data;
 
       const user = await UserRepository.findByIdWithPassword(req.user._id);
       const isMatch = await user.matchPassword(dto.currentPassword);

@@ -1,48 +1,36 @@
-class CreateOrderDTO {
-  constructor(body) {
-    this.tableNumber = body.tableNumber?.trim() || '';
-    this.notes = body.notes?.trim() || '';
-  }
+const { z } = require('zod');
 
-  validate() {
-    return [];
+const ORDER_STATUSES = ['pending', 'confirmed', 'preparing', 'served', 'completed', 'cancelled'];
+
+const createOrderSchema = z.object({
+  tableNumber: z.string().trim().default(''),
+  notes: z.string().trim().default(''),
+});
+
+const updateOrderStatusSchema = z.object({
+  status: z.enum(ORDER_STATUSES, {
+    error: `Invalid status. Must be: ${ORDER_STATUSES.join(', ')}`,
+  }),
+});
+
+const orderQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(10),
+  status: z.string().optional().default(''),
+  search: z.string().optional().default(''),
+});
+
+function buildOrderFilter(parsed, userId = null) {
+  const filter = {};
+  if (userId) filter.user = userId;
+  if (parsed.status) filter.status = parsed.status;
+  if (parsed.search) {
+    filter.$or = [
+      { 'items.name': { $regex: parsed.search, $options: 'i' } },
+      { tableNumber: { $regex: parsed.search, $options: 'i' } },
+    ];
   }
+  return filter;
 }
 
-class UpdateOrderStatusDTO {
-  constructor(body) {
-    this.status = body.status;
-  }
-
-  validate() {
-    const valid = ['pending', 'confirmed', 'preparing', 'served', 'completed', 'cancelled'];
-    if (!this.status || !valid.includes(this.status)) {
-      return ['Invalid status. Must be: ' + valid.join(', ')];
-    }
-    return [];
-  }
-}
-
-class OrderQueryDTO {
-  constructor(query) {
-    this.page = parseInt(query.page) || 1;
-    this.limit = parseInt(query.limit) || 10;
-    this.status = query.status || '';
-    this.search = query.search || '';
-  }
-
-  toFilter(userId = null) {
-    const filter = {};
-    if (userId) filter.user = userId;
-    if (this.status) filter.status = this.status;
-    if (this.search) {
-      filter.$or = [
-        { 'items.name': { $regex: this.search, $options: 'i' } },
-        { tableNumber: { $regex: this.search, $options: 'i' } },
-      ];
-    }
-    return filter;
-  }
-}
-
-module.exports = { CreateOrderDTO, UpdateOrderStatusDTO, OrderQueryDTO };
+module.exports = { createOrderSchema, updateOrderStatusSchema, orderQuerySchema, buildOrderFilter };
