@@ -1,0 +1,20 @@
+{
+  "/(dashboard)/(admin)/admin/announcements/page": "app/(dashboard)/(admin)/admin/announcements/page.js",
+  "/(dashboard)/(admin)/admin/bills/page": "app/(dashboard)/(admin)/admin/bills/page.js",
+  "/(dashboard)/(admin)/admin/categories/page": "app/(dashboard)/(admin)/admin/categories/page.js",
+  "/(dashboard)/(admin)/admin/page": "app/(dashboard)/(admin)/admin/page.js",
+  "/(dashboard)/(admin)/admin/products/page": "app/(dashboard)/(admin)/admin/products/page.js",
+  "/(dashboard)/(admin)/admin/reviews/page": "app/(dashboard)/(admin)/admin/reviews/page.js",
+  "/(dashboard)/(admin)/admin/users/page": "app/(dashboard)/(admin)/admin/users/page.js",
+  "/(dashboard)/(customer)/announcements/page": "app/(dashboard)/(customer)/announcements/page.js",
+  "/(dashboard)/(customer)/cart/page": "app/(dashboard)/(customer)/cart/page.js",
+  "/(dashboard)/(customer)/dashboard/page": "app/(dashboard)/(customer)/dashboard/page.js",
+  "/(dashboard)/(customer)/menu/[id]/page": "app/(dashboard)/(customer)/menu/[id]/page.js",
+  "/(dashboard)/(customer)/menu/page": "app/(dashboard)/(customer)/menu/page.js",
+  "/(dashboard)/(customer)/orders/page": "app/(dashboard)/(customer)/orders/page.js",
+  "/(dashboard)/(customer)/profile/page": "app/(dashboard)/(customer)/profile/page.js",
+  "/(dashboard)/(customer)/reviews/page": "app/(dashboard)/(customer)/reviews/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/signup/page": "app/signup/page.js"
+}

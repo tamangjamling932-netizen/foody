@@ -1,0 +1,407 @@
+[00:00:02.359] Server  LOG     ✓ Ready in 1860ms
+[00:00:04.046] Server  ERROR   ⨯ ./src/app/(dashboard)/(customer)/dashboard/page.tsx:9:1
+Export FiPin doesn't exist in target module
+   7 | import { Order, Announcement } from "@/types";
+   8 | import toast from "react-hot-toast";
+>  9 | import {
+     | ^^^^^^^^
+> 10 |   FiShoppingBag,
+     | ^^^^^^^^^^^^^^^^
+> 11 |   FiClock,
+     | ^^^^^^^^^^^^^^^^
+> 12 |   FiDollarSign,
+     | ^^^^^^^^^^^^^^^^
+> 13 |   FiArrowRight,
+     | ^^^^^^^^^^^^^^^^
+> 14 |   FiShoppingCart,
+     | ^^^^^^^^^^^^^^^^
+> 15 |   FiList,
+     | ^^^^^^^^^^^^^^^^
+> 16 |   FiPackage,
+     | ^^^^^^^^^^^^^^^^
+> 17 |   FiTrendingUp,
+     | ^^^^^^^^^^^^^^^^
+> 18 |   FiStar,
+     | ^^^^^^^^^^^^^^^^
+> 19 |   FiCheckCircle,
+     | ^^^^^^^^^^^^^^^^
+> 20 |   FiXCircle,
+     | ^^^^^^^^^^^^^^^^
+> 21 |   FiBarChart2,
+     | ^^^^^^^^^^^^^^^^
+> 22 |   FiBell,
+     | ^^^^^^^^^^^^^^^^
+> 23 |   FiPin,
+     | ^^^^^^^^^^^^^^^^
+> 24 |   FiX,
+     | ^^^^^^^^^^^^^^^^
+> 25 | } from "react-icons/fi";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+  26 | import { formatCurrency } from "@/lib/currency";
+  27 |
+  28 | export default function CustomerDashboard() {
+
+The export FiPin was not found in module [project]/node_modules/react-icons/fi/index.mjs [app-client] (ecmascript).
+Did you mean to import FiMapPin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component Browser]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component SSR]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+
+
+./src/app/(dashboard)/(customer)/dashboard/page.tsx:9:1
+Export FiPin doesn't exist in target module
+   7 | import { Order, Announcement } from "@/types";
+   8 | import toast from "react-hot-toast";
+>  9 | import {
+     | ^^^^^^^^
+> 10 |   FiShoppingBag,
+     | ^^^^^^^^^^^^^^^^
+> 11 |   FiClock,
+     | ^^^^^^^^^^^^^^^^
+> 12 |   FiDollarSign,
+     | ^^^^^^^^^^^^^^^^
+> 13 |   FiArrowRight,
+     | ^^^^^^^^^^^^^^^^
+> 14 |   FiShoppingCart,
+     | ^^^^^^^^^^^^^^^^
+> 15 |   FiList,
+     | ^^^^^^^^^^^^^^^^
+> 16 |   FiPackage,
+     | ^^^^^^^^^^^^^^^^
+> 17 |   FiTrendingUp,
+     | ^^^^^^^^^^^^^^^^
+> 18 |   FiStar,
+     | ^^^^^^^^^^^^^^^^
+> 19 |   FiCheckCircle,
+     | ^^^^^^^^^^^^^^^^
+> 20 |   FiXCircle,
+     | ^^^^^^^^^^^^^^^^
+> 21 |   FiBarChart2,
+     | ^^^^^^^^^^^^^^^^
+> 22 |   FiBell,
+     | ^^^^^^^^^^^^^^^^
+> 23 |   FiPin,
+     | ^^^^^^^^^^^^^^^^
+> 24 |   FiX,
+     | ^^^^^^^^^^^^^^^^
+> 25 | } from "react-icons/fi";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+  26 | import { formatCurrency } from "@/lib/currency";
+  27 |
+  28 | export default function CustomerDashboard() {
+
+The export FiPin was not found in module [project]/node_modules/react-icons/fi/index.mjs [app-ssr] (ecmascript).
+Did you mean to import FiMapPin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component Browser]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component SSR]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+
+[00:00:05.242] Browser ERROR   uncaughtError: Error: ./src/app/(dashboard)/(customer)/dashboard/page.tsx:9:1
+Export FiPin doesn't exist in target module
+   7 | import { Order, Announcement } from "@/types";
+   8 | import toast from "react-hot-toast";
+>  9 | import {
+     | ^^^^^^^^
+> 10 |   FiShoppingBag,
+     | ^^^^^^^^^^^^^^^^
+> 11 |   FiClock,
+     | ^^^^^^^^^^^^^^^^
+> 12 |   FiDollarSign,
+     | ^^^^^^^^^^^^^^^^
+> 13 |   FiArrowRight,
+     | ^^^^^^^^^^^^^^^^
+> 14 |   FiShoppingCart,
+     | ^^^^^^^^^^^^^^^^
+> 15 |   FiList,
+     | ^^^^^^^^^^^^^^^^
+> 16 |   FiPackage,
+     | ^^^^^^^^^^^^^^^^
+> 17 |   FiTrendingUp,
+     | ^^^^^^^^^^^^^^^^
+> 18 |   FiStar,
+     | ^^^^^^^^^^^^^^^^
+> 19 |   FiCheckCircle,
+     | ^^^^^^^^^^^^^^^^
+> 20 |   FiXCircle,
+     | ^^^^^^^^^^^^^^^^
+> 21 |   FiBarChart2,
+     | ^^^^^^^^^^^^^^^^
+> 22 |   FiBell,
+     | ^^^^^^^^^^^^^^^^
+> 23 |   FiPin,
+     | ^^^^^^^^^^^^^^^^
+> 24 |   FiX,
+     | ^^^^^^^^^^^^^^^^
+> 25 | } from "react-icons/fi";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+  26 | import { formatCurrency } from "@/lib/currency";
+  27 |
+  28 | export default function CustomerDashboard() {
+
+The export FiPin was not found in module [project]/node_modules/react-icons/fi/index.mjs [app-client] (ecmascript).
+Did you mean to import FiMapPin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component Browser]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component SSR]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+
+[00:00:05.481] Browser ERROR   ./src/app/(dashboard)/(customer)/dashboard/page.tsx:9:1
+Export FiPin doesn't exist in target module
+   7 | import { Order, Announcement } from "@/types";
+   8 | import toast from "react-hot-toast";
+>  9 | import {
+     | ^^^^^^^^
+> 10 |   FiShoppingBag,
+     | ^^^^^^^^^^^^^^^^
+> 11 |   FiClock,
+     | ^^^^^^^^^^^^^^^^
+> 12 |   FiDollarSign,
+     | ^^^^^^^^^^^^^^^^
+> 13 |   FiArrowRight,
+     | ^^^^^^^^^^^^^^^^
+> 14 |   FiShoppingCart,
+     | ^^^^^^^^^^^^^^^^
+> 15 |   FiList,
+     | ^^^^^^^^^^^^^^^^
+> 16 |   FiPackage,
+     | ^^^^^^^^^^^^^^^^
+> 17 |   FiTrendingUp,
+     | ^^^^^^^^^^^^^^^^
+> 18 |   FiStar,
+     | ^^^^^^^^^^^^^^^^
+> 19 |   FiCheckCircle,
+     | ^^^^^^^^^^^^^^^^
+> 20 |   FiXCircle,
+     | ^^^^^^^^^^^^^^^^
+> 21 |   FiBarChart2,
+     | ^^^^^^^^^^^^^^^^
+> 22 |   FiBell,
+     | ^^^^^^^^^^^^^^^^
+> 23 |   FiPin,
+     | ^^^^^^^^^^^^^^^^
+> 24 |   FiX,
+     | ^^^^^^^^^^^^^^^^
+> 25 | } from "react-icons/fi";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+  26 | import { formatCurrency } from "@/lib/currency";
+  27 |
+  28 | export default function CustomerDashboard() {
+
+The export FiPin was not found in module [project]/node_modules/react-icons/fi/index.mjs [app-client] (ecmascript).
+Did you mean to import FiMapPin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component Browser]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component SSR]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+[00:00:05.481] Browser ERROR   ./src/app/(dashboard)/(customer)/dashboard/page.tsx:9:1
+Export FiPin doesn't exist in target module
+   7 | import { Order, Announcement } from "@/types";
+   8 | import toast from "react-hot-toast";
+>  9 | import {
+     | ^^^^^^^^
+> 10 |   FiShoppingBag,
+     | ^^^^^^^^^^^^^^^^
+> 11 |   FiClock,
+     | ^^^^^^^^^^^^^^^^
+> 12 |   FiDollarSign,
+     | ^^^^^^^^^^^^^^^^
+> 13 |   FiArrowRight,
+     | ^^^^^^^^^^^^^^^^
+> 14 |   FiShoppingCart,
+     | ^^^^^^^^^^^^^^^^
+> 15 |   FiList,
+     | ^^^^^^^^^^^^^^^^
+> 16 |   FiPackage,
+     | ^^^^^^^^^^^^^^^^
+> 17 |   FiTrendingUp,
+     | ^^^^^^^^^^^^^^^^
+> 18 |   FiStar,
+     | ^^^^^^^^^^^^^^^^
+> 19 |   FiCheckCircle,
+     | ^^^^^^^^^^^^^^^^
+> 20 |   FiXCircle,
+     | ^^^^^^^^^^^^^^^^
+> 21 |   FiBarChart2,
+     | ^^^^^^^^^^^^^^^^
+> 22 |   FiBell,
+     | ^^^^^^^^^^^^^^^^
+> 23 |   FiPin,
+     | ^^^^^^^^^^^^^^^^
+> 24 |   FiX,
+     | ^^^^^^^^^^^^^^^^
+> 25 | } from "react-icons/fi";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+  26 | import { formatCurrency } from "@/lib/currency";
+  27 |
+  28 | export default function CustomerDashboard() {
+
+The export FiPin was not found in module [project]/node_modules/react-icons/fi/index.mjs [app-ssr] (ecmascript).
+Did you mean to import FiMapPin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component Browser]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component SSR]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+[00:00:05.864] Browser ERROR   ./src/app/(dashboard)/(customer)/dashboard/page.tsx:9:1
+Export FiPin doesn't exist in target module
+   7 | import { Order, Announcement } from "@/types";
+   8 | import toast from "react-hot-toast";
+>  9 | import {
+     | ^^^^^^^^
+> 10 |   FiShoppingBag,
+     | ^^^^^^^^^^^^^^^^
+> 11 |   FiClock,
+     | ^^^^^^^^^^^^^^^^
+> 12 |   FiDollarSign,
+     | ^^^^^^^^^^^^^^^^
+> 13 |   FiArrowRight,
+     | ^^^^^^^^^^^^^^^^
+> 14 |   FiShoppingCart,
+     | ^^^^^^^^^^^^^^^^
+> 15 |   FiList,
+     | ^^^^^^^^^^^^^^^^
+> 16 |   FiPackage,
+     | ^^^^^^^^^^^^^^^^
+> 17 |   FiTrendingUp,
+     | ^^^^^^^^^^^^^^^^
+> 18 |   FiStar,
+     | ^^^^^^^^^^^^^^^^
+> 19 |   FiCheckCircle,
+     | ^^^^^^^^^^^^^^^^
+> 20 |   FiXCircle,
+     | ^^^^^^^^^^^^^^^^
+> 21 |   FiBarChart2,
+     | ^^^^^^^^^^^^^^^^
+> 22 |   FiBell,
+     | ^^^^^^^^^^^^^^^^
+> 23 |   FiPin,
+     | ^^^^^^^^^^^^^^^^
+> 24 |   FiX,
+     | ^^^^^^^^^^^^^^^^
+> 25 | } from "react-icons/fi";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+  26 | import { formatCurrency } from "@/lib/currency";
+  27 |
+  28 | export default function CustomerDashboard() {
+
+The export FiPin was not found in module [project]/node_modules/react-icons/fi/index.mjs [app-client] (ecmascript).
+Did you mean to import FiMapPin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component Browser]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component SSR]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+[00:00:05.864] Browser ERROR   ./src/app/(dashboard)/(customer)/dashboard/page.tsx:9:1
+Export FiPin doesn't exist in target module
+   7 | import { Order, Announcement } from "@/types";
+   8 | import toast from "react-hot-toast";
+>  9 | import {
+     | ^^^^^^^^
+> 10 |   FiShoppingBag,
+     | ^^^^^^^^^^^^^^^^
+> 11 |   FiClock,
+     | ^^^^^^^^^^^^^^^^
+> 12 |   FiDollarSign,
+     | ^^^^^^^^^^^^^^^^
+> 13 |   FiArrowRight,
+     | ^^^^^^^^^^^^^^^^
+> 14 |   FiShoppingCart,
+     | ^^^^^^^^^^^^^^^^
+> 15 |   FiList,
+     | ^^^^^^^^^^^^^^^^
+> 16 |   FiPackage,
+     | ^^^^^^^^^^^^^^^^
+> 17 |   FiTrendingUp,
+     | ^^^^^^^^^^^^^^^^
+> 18 |   FiStar,
+     | ^^^^^^^^^^^^^^^^
+> 19 |   FiCheckCircle,
+     | ^^^^^^^^^^^^^^^^
+> 20 |   FiXCircle,
+     | ^^^^^^^^^^^^^^^^
+> 21 |   FiBarChart2,
+     | ^^^^^^^^^^^^^^^^
+> 22 |   FiBell,
+     | ^^^^^^^^^^^^^^^^
+> 23 |   FiPin,
+     | ^^^^^^^^^^^^^^^^
+> 24 |   FiX,
+     | ^^^^^^^^^^^^^^^^
+> 25 | } from "react-icons/fi";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+  26 | import { formatCurrency } from "@/lib/currency";
+  27 |
+  28 | export default function CustomerDashboard() {
+
+The export FiPin was not found in module [project]/node_modules/react-icons/fi/index.mjs [app-ssr] (ecmascript).
+Did you mean to import FiMapPin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component Browser]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Client Component SSR]
+    ./src/app/(dashboard)/(customer)/dashboard/page.tsx [Server Component]
+[00:00:29.943] Server  LOG     ✓ Compiled in 81ms
+[00:00:30.347] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:31.441] Browser WARN    Image with src "http://localhost:3000/assets/images/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:42.343] Server  LOG     ✓ Compiled in 55ms
+[00:00:51.098] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:15.529] Browser WARN    Image with src "http://localhost:3000/assets/images/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:42.153] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:42.352] Browser WARN    Image with src "http://localhost:3000/assets/images/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:04:41.316] Server  LOG     ✓ Compiled in 121ms
+[00:04:53.680] Server  LOG     ✓ Compiled in 34ms
+[00:15:03.937] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:04.097] Browser WARN    Image with src "http://localhost:3000/assets/images/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:21:47.901] Server  LOG     ✓ Compiled in 877ms
+[00:24:22.133] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:22.308] Browser WARN    Image with src "http://localhost:3000/assets/images/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:24:26.904] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:27.106] Browser WARN    Image with src "http://localhost:3000/assets/images/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:25:25.120] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:25.353] Browser WARN    Image with src "http://localhost:3000/assets/images/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:25:25.489] Browser WARN    Image with src "http://localhost:5000/uploads/1772087983262-493820146.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
